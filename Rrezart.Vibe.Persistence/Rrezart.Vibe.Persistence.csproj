@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SeedData\enviroments.json" />
+    <None Remove="SeedData\genres.json" />
+    <None Remove="SeedData\playlists.json" />
+    <None Remove="SeedData\users.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SeedData\enviroments.json" />
+    <EmbeddedResource Include="SeedData\genres.json" />
+    <EmbeddedResource Include="SeedData\playlists.json" />
+    <EmbeddedResource Include="SeedData\users.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rrezart.Vibe.Application\Rrezart.Vibe.Application.csproj" />
+    <ProjectReference Include="..\Rrezart.Vibe.Domain\Rrezart.Vibe.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

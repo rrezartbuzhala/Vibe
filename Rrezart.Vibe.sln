@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rrezart.Vibe.Domain", "Rrezart.Vibe.Domain\Rrezart.Vibe.Domain.csproj", "{4C794B84-D95A-456E-B15D-DA53A4F3931F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rrezart.Vibe.Persistence", "Rrezart.Vibe.Persistence\Rrezart.Vibe.Persistence.csproj", "{692F1C0B-1391-48A5-967D-494D8BFEBEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rrezart.Vibe.Application", "Rrezart.Vibe.Application\Rrezart.Vibe.Application.csproj", "{E0258781-A090-4B31-9D3C-A6552A4491DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rrezart.Vibe.Host", "Rrezart.Vibe.Host\Rrezart.Vibe.Host.csproj", "{55612B54-EE41-47A0-AB70-0E164299CC42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C794B84-D95A-456E-B15D-DA53A4F3931F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C794B84-D95A-456E-B15D-DA53A4F3931F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C794B84-D95A-456E-B15D-DA53A4F3931F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C794B84-D95A-456E-B15D-DA53A4F3931F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692F1C0B-1391-48A5-967D-494D8BFEBEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692F1C0B-1391-48A5-967D-494D8BFEBEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692F1C0B-1391-48A5-967D-494D8BFEBEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692F1C0B-1391-48A5-967D-494D8BFEBEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0258781-A090-4B31-9D3C-A6552A4491DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0258781-A090-4B31-9D3C-A6552A4491DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0258781-A090-4B31-9D3C-A6552A4491DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0258781-A090-4B31-9D3C-A6552A4491DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55612B54-EE41-47A0-AB70-0E164299CC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55612B54-EE41-47A0-AB70-0E164299CC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55612B54-EE41-47A0-AB70-0E164299CC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55612B54-EE41-47A0-AB70-0E164299CC42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E61431C-2F2A-4AF4-9B27-B41433FEB991}
+	EndGlobalSection
+EndGlobal

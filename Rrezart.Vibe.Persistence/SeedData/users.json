@@ -1,0 +1,15 @@
+[
+  {
+    "id": "ace913be-8ad5-4463-8f9f-ea5098424160",
+    "email": "test@test.com",
+    "normalizedEmail": "TEST@TEST.COM",
+    "userName": "test",
+    "normalizedUserName": "TEST",
+    "firstName": "Filan",
+    "lastName": "Fisteku",
+    "emailConfirmed": true,
+    "securityStamp": "eb618a7c-bc73-4c88-9d6d-897f7072e328",
+    "passwordHash": "AQAAAAEAACcQAAAAEOp1FcBk9/K+4fLVaumFiGFc/4HJ4Fm6NZ3KBDo+UgIdtt5+l71hChvyg/LiVlBZcg=="
+  }
+
+]
