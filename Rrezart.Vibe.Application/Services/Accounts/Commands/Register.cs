@@ -20,6 +20,7 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Password { get; set; }
+            public Guid RoleId { get; set; }
 
             public User ToEntity()
             {
@@ -32,6 +33,7 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
                     LastName = LastName,
                     EmailConfirmed = true,
                     SecurityStamp = Guid.NewGuid().ToString(),
+                    
                 };
             }
         }
@@ -39,9 +41,11 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
         public class CommandHandler : IRequestHandler<Command>
         {
             private readonly UserManager<User> _userManager;
-            public CommandHandler(UserManager<User> userManager)
+            private readonly RoleManager<Role> _roleManager;
+            public CommandHandler(UserManager<User> userManager, RoleManager<Role> roleManager)
             {
                 _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+                _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
@@ -55,13 +59,22 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
                         throw new Exception(error.Description);
                     }
                 }
-                await CreateClaims(user);
+                await CreateClaims(request, user);
+
+                await CreateRoles(request, user);
 
                 return Unit.Value;
             }
 
-            private async Task CreateClaims(User user)
+            private async Task CreateRoles(Command request, User user)
             {
+                var role = await _roleManager.FindByIdAsync(request.RoleId.ToString());
+                await _userManager.AddToRoleAsync(user, role.Name);
+            }
+
+            private async Task CreateClaims(Command request,User user)
+            {
+                var role = await _roleManager.FindByIdAsync(request.RoleId.ToString());
                 IList<Claim> claims = new List<Claim>
                 {
                     new Claim("userId", user.Id.ToString()),
@@ -71,6 +84,7 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
                     new Claim("LastName",user.LastName),
                     new Claim("EmailConfirmed",user.EmailConfirmed.ToString()),
                     new Claim("SecurityStamp",user.SecurityStamp.ToString()),
+                    new Claim(ClaimTypes.Role, role.Name),
                 };
                 await _userManager.AddClaimsAsync(user, claims);
             }

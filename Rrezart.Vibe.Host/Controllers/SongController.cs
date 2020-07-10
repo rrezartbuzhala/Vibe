@@ -26,10 +26,11 @@ namespace Rrezart.Vibe.Host.Controllers
             return Ok(result);
         }
 
-        //[Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetSongsQuery query)
         {
+            var test = HttpContext.User.Claims;
             var result = await _mediator.Send(query);
             return Ok(result);
         }

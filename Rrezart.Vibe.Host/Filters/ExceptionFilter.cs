@@ -29,7 +29,7 @@ namespace Rrezart.Vibe.Host.Filters
 
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             context.HttpContext.Response.ContentType = "application/json";
-            context.Result = new JsonResult(new { Message = context.Exception.Message });
+            context.Result = new JsonResult(new { Message = context.Exception.Message,StackTrace = context.Exception.StackTrace });
             return;
         }
     }

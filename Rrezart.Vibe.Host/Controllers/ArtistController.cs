@@ -1,11 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Rrezart.Vibe.Application.Services.Artists.Commands.Add;
-using Rrezart.Vibe.Application.Services.Artists.Queries.Get;
+using Rrezart.Vibe.Application.Services.Artists.Commands;
+using Rrezart.Vibe.Application.Services.Artists.Queries;
 using Rrezart.Vibe.Application.Services.Artists.Queries.GetById;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Rrezart.Vibe.Host.Controllers
@@ -22,14 +20,14 @@ namespace Rrezart.Vibe.Host.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] AddArtistCommand query)
+        public async Task<IActionResult> Add([FromBody] Add.Command command)
         {
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetArtistsQuery query)
+        public async Task<IActionResult> Get([FromQuery] Get.Query query)
         {
             var result = await _mediator.Send(query);
             return Ok(result);

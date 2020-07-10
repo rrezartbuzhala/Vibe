@@ -20,6 +20,7 @@ namespace Rrezart.Vibe.Persistence
             SeedEnviroment(context);
             SeedGenres(context);
             SeedUser(context);
+            SeedRoles(context);
         }
         private void SeedUser(VibeDbContext context)
         {
@@ -46,6 +47,15 @@ namespace Rrezart.Vibe.Persistence
                 };
                 context.UserClaims.AddRange(userClaims);
             }
+        }
+
+        private void SeedRoles(VibeDbContext context)
+        {
+            if (context.Roles.FirstOrDefault() != null) return;
+
+            var roles = JsonConvert.DeserializeObject<IList<Role>>(ReadJson("roles.json"));
+            context.Roles.AddRange(roles);
+            context.SaveChanges();
         }
 
         private void SeedEnviroment(VibeDbContext context)

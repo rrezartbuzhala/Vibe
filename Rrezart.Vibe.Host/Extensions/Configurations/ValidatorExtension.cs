@@ -1,6 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
-using Rrezart.Vibe.Application.Services.Artists.Commands.Add;
+using Rrezart.Vibe.Application.Services.Songs.Command;
 
 namespace Rrezart.Vibe.Host.Extensions.Configurations
 {
@@ -10,7 +10,7 @@ namespace Rrezart.Vibe.Host.Extensions.Configurations
         {
             builder.AddFluentValidation(fv =>
             {
-                fv.RegisterValidatorsFromAssemblyContaining<AddArtistCommandValidator>();
+                fv.RegisterValidatorsFromAssemblyContaining<Add.CommandValidator>();
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
             }
             );

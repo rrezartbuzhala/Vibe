@@ -9,7 +9,8 @@
     "lastName": "Fisteku",
     "emailConfirmed": true,
     "securityStamp": "eb618a7c-bc73-4c88-9d6d-897f7072e328",
-    "passwordHash": "AQAAAAEAACcQAAAAEOp1FcBk9/K+4fLVaumFiGFc/4HJ4Fm6NZ3KBDo+UgIdtt5+l71hChvyg/LiVlBZcg=="
+    "passwordHash": "AQAAAAEAACcQAAAAEOp1FcBk9/K+4fLVaumFiGFc/4HJ4Fm6NZ3KBDo+UgIdtt5+l71hChvyg/LiVlBZcg==",
+    "roleId": "81FB012A-B4A9-47E0-8BDD-9AB6D394FEB4"
   }
 
 ]

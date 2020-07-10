@@ -31,6 +31,7 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
             public CommandValidator(UserManager<User> userManager)
             {
                 _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+
                 Validations();
             }
 
@@ -50,22 +51,20 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
         {
             private readonly UserManager<User> _userManager;
             private readonly SignInManager<User> _signManager;
+            private readonly RoleManager<Role> _roleManager;
             private readonly IConfiguration _configuration;
 
-            public CommandHandler(UserManager<User> userManager, SignInManager<User> signManager, IConfiguration configuration)
+            public CommandHandler(UserManager<User> userManager, SignInManager<User> signManager, IConfiguration configuration, RoleManager<Role> roleManager)
             {
                 _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
                 _signManager = signManager ?? throw new ArgumentNullException(nameof(signManager));
                 _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+                _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
             }
             public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
             {
 
                 var user = await _userManager.FindByEmailAsync(request.Email);
-                /* if (user == null)
-                 {
-                     throw new Exception("User does not exist");
-                 } */
                 var response = await _signManager.PasswordSignInAsync(user, request.Password, true, false);
                 if (!response.Succeeded)
                 {
@@ -74,6 +73,7 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
 
 
                 var claims = await _userManager.GetClaimsAsync(user);
+
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.UTF8.GetBytes(_configuration["Authentication:Secret"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
