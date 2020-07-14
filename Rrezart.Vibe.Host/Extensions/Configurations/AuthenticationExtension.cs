@@ -10,6 +10,7 @@ using Rrezart.Vibe.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace Rrezart.Vibe.Host.Extensions.Configurations
                 .AddEntityFrameworkStores<VibeDbContext>()
                 .AddDefaultTokenProviders();
 
-
+           
             var key = Encoding.UTF8.GetBytes(configuration["Authentication:Secret"]);
             services.AddAuthentication(options =>
             {

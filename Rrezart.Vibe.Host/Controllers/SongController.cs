@@ -26,7 +26,7 @@ namespace Rrezart.Vibe.Host.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "User")]
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetSongsQuery query)
         {

@@ -16,7 +16,7 @@ namespace Rrezart.Vibe.Host.Extensions.Configurations
                 options.UseSqlServer(connectionString)
             );
 
-            services.AddScoped<IVibeDbContext, VibeDbContext>();
+            services.AddScoped<IVibeDbContext, VibeDbContext>();          
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Rrezart.Vibe.Host.Extensions;
 using Rrezart.Vibe.Host.Filters;
+using Rrezart.Vibe.Host.Middleware;
 
 namespace Rrezart.Vibe.Host
 {
@@ -20,11 +21,11 @@ namespace Rrezart.Vibe.Host
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddMvc(options =>
-            {
+            services.AddControllers(options => { 
                 options.Filters.Add(new ExceptionFilter());
-            }).UseServices();
+                options.Filters.Add(new ActionFilter());
+            })
+                .UseServices();
             services.RegisterServices(Configuration);
         }
 
@@ -40,7 +41,6 @@ namespace Rrezart.Vibe.Host
 
             app.UseRouting();
             app.AddServices();
-            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

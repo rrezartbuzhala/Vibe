@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rrezart.Vibe.Application.Services.Albums.Commands;
 using Rrezart.Vibe.Application.Services.Albums.Queries;
@@ -29,6 +30,7 @@ namespace Rrezart.Vibe.Host.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] Get.Query query)
         {
+            var test = HttpContext.User;
             var result = await _mediator.Send(query);
             return Ok(result);
         }
