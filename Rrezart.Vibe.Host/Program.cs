@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Rrezart.Vibe.Application.Interfaces;
-using Rrezart.Vibe.Domain.Entities.Identity;
 using Rrezart.Vibe.Persistence;
 
 namespace Rrezart.Vibe.Host

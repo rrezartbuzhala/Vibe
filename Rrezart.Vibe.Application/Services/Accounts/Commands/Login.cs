@@ -65,8 +65,8 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
             {
 
                 var user = await _userManager.FindByEmailAsync(request.Email);
-                var response = await _signManager.PasswordSignInAsync(user, request.Password, true, false);
-                if (!response.Succeeded)
+                var login = await _signManager.PasswordSignInAsync(user, request.Password, true, false);
+                if (!login.Succeeded)
                 {
                     throw new PasswordIncorrectException();
                 }

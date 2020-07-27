@@ -30,7 +30,7 @@ namespace Rrezart.Vibe.Host.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetSongsQuery query)
         {
-            var test = HttpContext.User.Claims;
+            var test = HttpContext.User;
             var result = await _mediator.Send(query);
             return Ok(result);
         }

@@ -38,6 +38,26 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
             }
         }
 
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                Validations();
+            }
+
+            private void Validations()
+            {
+                RuleFor(x => x.Email).Cascade(CascadeMode.StopOnFirstFailure)
+                    .NotNull().WithMessage("Email must not be null")
+                    .NotEmpty().WithMessage("Email must not be empty")
+                    .EmailAddress().WithMessage("Email not valid");
+
+                RuleFor(x => x.Password).Cascade(CascadeMode.StopOnFirstFailure)
+                    .NotNull().WithMessage("Password must not be null")
+                    .NotEmpty().WithMessage("Password must not be empty");
+            }
+        }
+
         public class CommandHandler : IRequestHandler<Command>
         {
             private readonly UserManager<User> _userManager;
@@ -90,24 +110,6 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
             }
         }
 
-        public class CommandValidator : AbstractValidator<Command>
-        {
-            public CommandValidator()
-            {
-                Validations();
-            }
-
-            private void Validations()
-            {
-                RuleFor(x => x.Email).Cascade(CascadeMode.StopOnFirstFailure)
-                    .NotNull().WithMessage("Email must not be null")
-                    .NotEmpty().WithMessage("Email must not be empty")
-                    .EmailAddress().WithMessage("Email not valid");
-
-                RuleFor(x => x.Password).Cascade(CascadeMode.StopOnFirstFailure)
-                    .NotNull().WithMessage("Password must not be null")
-                    .NotEmpty().WithMessage("Password must not be empty");
-            }
-        }
+      
     }
 }
