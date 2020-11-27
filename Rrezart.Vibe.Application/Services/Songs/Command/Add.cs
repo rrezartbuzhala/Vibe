@@ -107,7 +107,7 @@ namespace Rrezart.Vibe.Application.Services.Songs.Command
             }
         }
 
-        public class GenreCommand : IRequest
+        public class GenreCommand
         {
             public Guid GenreId { get; set; }
 

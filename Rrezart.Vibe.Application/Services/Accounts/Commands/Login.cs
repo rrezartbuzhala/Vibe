@@ -54,7 +54,7 @@ namespace Rrezart.Vibe.Application.Services.Accounts.Commands
             private readonly RoleManager<Role> _roleManager;
             private readonly IConfiguration _configuration;
 
-            public CommandHandler(UserManager<User> userManager, SignInManager<User> signManager, IConfiguration configuration, RoleManager<Role> roleManager)
+            public CommandHandler(UserManager<User> userManager, SignInManager<User> signManager, RoleManager<Role> roleManager, IConfiguration configuration)
             {
                 _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
                 _signManager = signManager ?? throw new ArgumentNullException(nameof(signManager));

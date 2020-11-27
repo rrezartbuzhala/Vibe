@@ -10,6 +10,7 @@ namespace Rrezart.Vibe.Host.Controllers
 {
     [Route("api/albums")]
     [ApiController]
+    [Authorize]
     public class AlbumController : ControllerBase
     {
         private readonly IMediator _mediator;
